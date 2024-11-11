@@ -1,4 +1,4 @@
-package com.example.createaccountapp
+package com.example.diablo
 
 
 import com.example.diablo.CredentialsManager

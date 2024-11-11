@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/headerImageView"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/photo"
@@ -16,16 +16,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Welcome back"
         android:textColor="#333333"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerImageView" />
 
@@ -33,7 +35,7 @@
         android:id="@+id/signInDescriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:text="sign in to access your account"
         android:textColor="#888888"
         android:textSize="14sp"
@@ -41,11 +43,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcomeTextView" />
 
+
     <LinearLayout
         android:id="@+id/emailLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/edit_text_background"
         android:orientation="horizontal"
         android:padding="12dp"
@@ -70,6 +73,7 @@
             android:contentDescription="Mail Icon"
             android:src="@drawable/email_logo_2" />
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/passwordLayout"
@@ -126,6 +130,7 @@
         app:layout_constraintTop_toBottomOf="@id/passwordLayout"
         app:layout_constraintStart_toEndOf="@id/rememberMeCheckBox" />
 
+
     <Button
         android:id="@+id/nextButton"
         android:layout_width="0dp"
@@ -147,6 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginLeft="85dp"
         android:text="New Member? "
         android:textColor="#888888"
         android:textSize="14sp"
@@ -154,11 +160,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nextButton" />
 
+
     <TextView
         android:id="@+id/registerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginLeft="2dp"
         android:text="Register now"
         android:textColor="#6200EE"
         android:textSize="14sp"

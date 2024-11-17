@@ -1,180 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
 
+    <!-- Image View for the photo -->
     <ImageView
-        android:id="@+id/headerImageView"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/adventureImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:src="@drawable/photo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="-120dp"/>
 
-
+    <!-- Welcome Text -->
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:text="Welcome back"
-        android:textColor="#333333"
         android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerImageView" />
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="96dp"/>
 
     <TextView
-        android:id="@+id/signInDescriptionTextView"
+        android:id="@+id/signInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:text="sign in to access your account"
-        android:textColor="#888888"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeTextView" />
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginBottom="32dp"
+        android:layout_marginStart="76dp"/>
 
-
-    <LinearLayout
-        android:id="@+id/emailLayout"
-        android:layout_width="0dp"
+    <!-- Email EditText with Icon -->
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/edit_text_background"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signInDescriptionTextView">
+        android:layout_marginBottom="16dp">
 
         <EditText
             android:id="@+id/emailEditText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
             android:hint="Enter your email"
             android:inputType="textEmailAddress"
-            android:textColor="#333333"
-            android:textSize="16sp" />
+            android:background="@drawable/roundededittext"
+            android:padding="16dp"
+            android:drawableEnd="@drawable/email_logo"/>
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Mail Icon"
-            android:src="@drawable/email_logo_2" />
-    </LinearLayout>
+            android:id="@+id/emailIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/email_logo"
+            android:padding="8dp"/>
+    </RelativeLayout>
 
-
-    <LinearLayout
-        android:id="@+id/passwordLayout"
-        android:layout_width="0dp"
+    <!-- Password EditText with Icon -->
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/edit_text_background"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailLayout">
+        android:layout_marginBottom="16dp">
 
         <EditText
             android:id="@+id/passwordEditText"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#333333"
-            android:textSize="16sp" />
+            android:background="@drawable/roundededittext"
+            android:padding="16dp"
+            android:drawableEnd="@drawable/passwordlogo"/>
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Lock Icon"
-            android:src="@drawable/passwordlogo" />
+            android:id="@+id/passwordIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/passwordlogo"
+            android:padding="8dp"/>
+    </RelativeLayout>
+
+    <!-- Checkbox and Forgot Password text -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginTop="16dp">
+
+        <CheckBox
+            android:id="@+id/rememberMeCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me" />
+
+        <TextView
+            android:id="@+id/forgotPasswordTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textColor="@android:color/holo_blue_dark"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
-
-    <CheckBox
-        android:id="@+id/rememberMeCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Remember me"
-        android:textColor="#888888"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordLayout" />
-
-    <TextView
-        android:id="@+id/forgotPasswordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Forgot password?"
-        android:textColor="#6200EE"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordLayout"
-        app:layout_constraintStart_toEndOf="@id/rememberMeCheckBox" />
-
-
+    <!-- Next Button -->
     <Button
         android:id="@+id/nextButton"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#6200EE"
-        android:padding="12dp"
-        android:text="Next ➔"
+        android:text="Next"
+        android:background="@drawable/roundedbutton"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTextView" />
+        android:layout_marginTop="24dp" />
 
-
+    <!-- New Member Text -->
     <TextView
         android:id="@+id/newMemberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="85dp"
-        android:text="New Member? "
-        android:textColor="#888888"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/registerTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nextButton" />
+        android:text="New Member? Register now"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginTop="16dp" />
 
-
-    <TextView
-        android:id="@+id/registerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="2dp"
-        android:text="Register now"
-        android:textColor="#6200EE"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@id/newMemberTextView"
-        app:layout_constraintStart_toEndOf="@id/newMemberTextView" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+</LinearLayout>
 
 

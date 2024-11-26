@@ -22,5 +22,3 @@ class CredentialsManager {
         return isEmailValid(email) && isPasswordValid(password)
     }
 }
-
-

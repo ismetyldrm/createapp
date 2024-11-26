@@ -2,20 +2,21 @@ package com.example.diablo
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.diablo.databinding.ActivitySecondPage2Binding
 
 class SecondPageActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivitySecondPage2Binding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySecondPage2Binding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_second_page2)
 
+        // Log for debugging
+        Log.d("SecondPageActivity", "Activity loaded successfully!")
 
-        binding.newMemberTextView.setOnClickListener {
+        // Navigation to LoginActivity
+        val alreadyMemberTextView = findViewById<TextView>(R.id.newMemberTextView)
+        alreadyMemberTextView.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

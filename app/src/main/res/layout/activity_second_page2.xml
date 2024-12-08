@@ -1,137 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="@drawable/background_gradient">
 
-    <!-- Image View for the photo -->
-    <ImageView
-        android:id="@+id/adventureImageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/photo"
-        android:layout_marginBottom="-120dp"/>
 
-    <!-- Welcome Text -->
-    <TextView
-        android:id="@+id/welcomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome back"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="96dp"/>
-
-    <TextView
-        android:id="@+id/signInTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sign in to access your account"
-        android:textSize="16sp"
-        android:textColor="@android:color/darker_gray"
-        android:layout_marginBottom="32dp"
-        android:layout_marginStart="76dp"/>
-
-    <!-- Email EditText with Icon -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
-
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your email"
-            android:inputType="textEmailAddress"
-            android:background="@drawable/roundededittext"
-            android:padding="16dp"
-            android:drawableEnd="@drawable/email_logo"/>
-
-        <ImageView
-            android:id="@+id/emailIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/email_logo"
-            android:padding="8dp"/>
-    </RelativeLayout>
-
-    <!-- Password EditText with Icon -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
-
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:background="@drawable/roundededittext"
-            android:padding="16dp"
-            android:drawableEnd="@drawable/passwordlogo"/>
-
-        <ImageView
-            android:id="@+id/passwordIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/passwordlogo"
-            android:padding="8dp"/>
-    </RelativeLayout>
-
-    <!-- Checkbox and Forgot Password text -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="start"
-        android:layout_marginTop="16dp">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <CheckBox
+        <ImageView
+            android:id="@+id/topImageView"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-50dp"
+            android:contentDescription="Top Image"
+            android:src="@drawable/photo"
+            android:scaleType="fitCenter" />
+
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/welcomeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Get Started"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#2C2C54" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/signInTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="by creating a free account"
+            android:textSize="14sp"
+            android:textColor="#636e72" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/RoundedTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Full Name"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/person"
+            app:endIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/RoundedTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Valid Email"
+            app:endIconDrawable="@drawable/email_logo"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/validEmailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/RoundedTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Phone Number"
+            app:endIconDrawable="@drawable/phone_logo"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/RoundedTextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:hint="Strong Password"
+            app:endIconDrawable="@drawable/passwordlogo"
+            app:endIconMode="custom"
+            app:endIconTint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/strongPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:padding="12dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/rememberMeCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remember me" />
+            android:layout_marginTop="16dp"
+            android:text="By checking the box you agree to our "
+            android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/forgotPasswordTextView"
-            android:layout_width="0dp"
+            android:id="@+id/termsTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot password?"
-            android:textColor="@android:color/holo_blue_dark"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1" />
+            android:layout_gravity="center"
+            android:text="Terms and Conditions"
+            android:textColor="#6200EE" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextButton"
+            style="@style/RoundedMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="REGISTER" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/alreadyMemberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already a member? Log In"
+            android:textColor="#6200EE"
+            android:gravity="center"/>
     </LinearLayout>
-
-    <!-- Next Button -->
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:background="@drawable/roundedbutton"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="24dp" />
-
-    <!-- New Member Text -->
-    <TextView
-        android:id="@+id/newMemberTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Member? Register now"
-        android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginTop="16dp" />
-
-</LinearLayout>
-
+</ScrollView>
 

@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.diablo.LoginActivity
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -21,9 +19,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second_page2)
 
-
         credentialsManager = CredentialsManager(this)
-
 
         val fullNameInput = findViewById<EditText>(R.id.fullNameEditText)
         val emailInput = findViewById<EditText>(R.id.validEmailEditText)
@@ -31,17 +27,14 @@ class RegisterActivity : AppCompatActivity() {
         val passwordInput = findViewById<EditText>(R.id.strongPasswordEditText)
         val termsCheckBox = findViewById<CheckBox>(R.id.rememberMeCheckBox)
         val nextButton = findViewById<Button>(R.id.nextButton)
-        val alreadyMemberTextView = findViewById<MaterialTextView>(R.id.alreadyMemberTextView) // Button "Already a member?"
-
+        val alreadyMemberTextView = findViewById<TextView>(R.id.alreadyMemberTextView) // Button "Already a member?"
 
         nextButton.setOnClickListener {
             val fullName = fullNameInput.text.toString()
-
             val email = emailInput.text.toString()
             val phoneNumber = phoneNumberInput.text.toString()
             val password = passwordInput.text.toString()
             val agreedToTerms = termsCheckBox.isChecked
-
 
             if (fullName.isEmpty()) {
                 showToast("Full name cannot be empty")
@@ -63,33 +56,30 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-
             val isRegistered = credentialsManager.register(email, password)
             if (isRegistered) {
                 showToast("Registration was successful! You can now log in.")
 
-
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
-
-
                 finish()
             } else {
                 showToast("The email is already in use. Please try another.")
             }
         }
 
-
         alreadyMemberTextView.setOnClickListener {
-
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
+            navigateToLogin()
         }
     }
 
-
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

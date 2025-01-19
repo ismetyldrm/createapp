@@ -3,6 +3,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
@@ -10,6 +11,8 @@ import androidx.fragment.app.Fragment
 import com.example.diablo.CredentialsManager
 import com.example.diablo.MainActivity
 import com.example.diablo.R
+import com.example.diablo.RecipeActivity
+import com.example.diablo.RecyclerFragment
 import com.example.diablo.RegisterFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -55,7 +58,7 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_SHORT).show()
 
 
-                val intent = Intent(requireContext(), MainActivity::class.java)
+                val intent = Intent(requireContext(), RecipeActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             } else {
@@ -66,9 +69,12 @@ class LoginFragment : Fragment() {
 
         newMemberTextView.setOnClickListener {
            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, RegisterFragment()) // Use the correct container ID
-
+                .replace(R.id.fragment_container, RegisterFragment())
+               .commit()
         }
+
+
+
 
         return view
     }

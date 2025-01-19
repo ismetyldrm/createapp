@@ -11,7 +11,9 @@ class CredentialsManagerTest1 {
     // Test empty email
     @Test
     fun givenEmptyPassword_thenReturnFalse() {
-        val credentialsManager = CredentialsManager()
+        val credentialsManager = CredentialsManager(
+            context = TODO()
+        )
 
         val isEmailValid = credentialsManager.isEmailValid("")
 

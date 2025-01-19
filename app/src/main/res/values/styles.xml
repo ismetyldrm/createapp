@@ -1,5 +1,23 @@
 <resources>
 
+    <!-- Uygulama Teması -->
+    <style name="Theme.Diablo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Uygulama renk ayarları -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Durum çubuğu rengi -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Varsayılan yazı tipi rengi -->
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Yuvarlak Köşeli TextInputLayout Stili -->
     <style name="RoundedTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundMode">outline</item>
         <item name="boxCornerRadiusTopStart">16dp</item>
@@ -10,7 +28,18 @@
         <item name="boxStrokeWidth">2dp</item>
         <item name="endIconTint">@color/black</item>
         <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="RoundedMaterialButton"></style>
+    <!-- Yuvarlak Köşeli MaterialButton Stili -->
+    <style name="RoundedMaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">32dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

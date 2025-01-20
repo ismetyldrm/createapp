@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.diablo.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -44,8 +45,9 @@ class LoginActivity : AppCompatActivity() {
 
             // Kullanıcı doğrulama
             if (credentialsManager.isValidUser(email, password)) {
-                val intent = Intent(this, RecipeActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java) // Activity sınıfı ile yönlendirme
                 startActivity(intent)
+                finish()
             } else {
                 Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
             }
@@ -63,8 +65,5 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
-
-
 
 }

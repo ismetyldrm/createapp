@@ -1,17 +1,17 @@
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.example.diablo.CredentialsManager
 import com.example.diablo.MainActivity
 import com.example.diablo.R
-import com.example.diablo.RecipeActivity
 import com.example.diablo.RecyclerFragment
 import com.example.diablo.RegisterFragment
 import com.google.android.material.button.MaterialButton
@@ -21,6 +21,7 @@ class LoginFragment : Fragment() {
 
     private lateinit var credentialsManager: CredentialsManager
 
+    @SuppressLint("CommitTransaction")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,10 +58,10 @@ class LoginFragment : Fragment() {
             if (credentialsManager.isValidUser(email, password)) {
                 Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_SHORT).show()
 
-
-                val intent = Intent(requireContext(), RecipeActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, RecyclerFragment()) // Container ID doğru olmalı
+                    .addToBackStack(null) // Geri tuşu ile LoginFragment'e dönmek isterseniz ekleyin
+                    .commit()
             } else {
                 Toast.makeText(requireContext(), "Invalid email or password", Toast.LENGTH_SHORT).show()
             }
@@ -69,12 +70,10 @@ class LoginFragment : Fragment() {
 
         newMemberTextView.setOnClickListener {
            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, RegisterFragment())
+                .replace(R.id.fragment_container, RegisterFragment()) // Use the correct container ID
+               .addToBackStack(null) // Geri tuşu ile önceki fragment'e dönmek isterseniz ekleyin
                .commit()
         }
-
-
-
 
         return view
     }

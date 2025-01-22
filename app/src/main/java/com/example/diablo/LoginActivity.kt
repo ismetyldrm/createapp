@@ -31,19 +31,19 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-            // Email format doğrulama
+
             if (!credentialsManager.isEmailValid(email)) {
                 Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Şifre doğrulama
+
             if (!credentialsManager.isPasswordValid(password)) {
                 Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Kullanıcı doğrulama
+
             if (credentialsManager.isValidUser(email, password)) {
                 val intent = Intent(this, MainActivity::class.java) // Activity sınıfı ile yönlendirme
                 startActivity(intent)
@@ -53,13 +53,13 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // Yeni üye kaydı için yönlendirme
+
         newMemberTextView.setOnClickListener {
             navigateToRegister()
         }
     }
 
-    // Kayıt ekranına yönlendirme
+
     private fun navigateToRegister() {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)

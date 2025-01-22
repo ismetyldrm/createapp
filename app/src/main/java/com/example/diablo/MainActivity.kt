@@ -2,6 +2,7 @@ package com.example.diablo
 
 
 import LoginFragment
+import RecyclerFragment
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,32 +14,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // İlk kez açıldığında LoginFragment veya RecyclerFragment gösterilecek
+
         if (savedInstanceState == null) {
-            // Burada başarılı giriş yapıldıysa RecyclerFragment gösterilmeli
-            val isUserLoggedIn = checkUserLoginStatus()  // Kullanıcının giriş yapıp yapmadığını kontrol et
+
+            val isUserLoggedIn = checkUserLoginStatus()
 
             if (isUserLoggedIn) {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, RecyclerFragment()) // RecipeFragment'i burada göster
+                    .replace(R.id.fragment_container, RecyclerFragment())
                     .commit()
             } else {
-                showLoginFragment()  // Giriş yapılmamışsa login ekranını göster
+                showLoginFragment()
             }
         }
     }
 
 
-    // Kullanıcı giriş durumu kontrolü
+
     private fun checkUserLoginStatus(): Boolean {
-        // Kullanıcının giriş yapıp yapmadığını kontrol et
-        // Örneğin, SharedPreferences veya bir oturum kontrolü ile bu doğrulama yapılabilir.
-        // Şu an için örnek olarak false döndürüyoruz.
+
         return false
     }
     private fun showLoginFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, LoginFragment())  // LoginFragment'i gösterme
+            .replace(R.id.fragment_container, LoginFragment())
             .commit()
 
     }
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     fun switchToRegisterFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, RegisterFragment())  // RegisterFragment'i gösterme
+            .replace(R.id.fragment_container, RegisterFragment())
             .addToBackStack(null)
             .commit()
     }

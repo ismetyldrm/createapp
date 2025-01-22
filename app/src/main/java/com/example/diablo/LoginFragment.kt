@@ -1,18 +1,15 @@
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.example.diablo.CredentialsManager
-import com.example.diablo.MainActivity
+import com.example.diablo.MyApp
 import com.example.diablo.R
-import com.example.diablo.RecyclerFragment
+import RecyclerFragment
 import com.example.diablo.RegisterFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -30,37 +27,37 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
 
-        credentialsManager = CredentialsManager(requireContext())
-
+        credentialsManager = (requireActivity().application as MyApp).credentialsManager
 
         val emailInput = view.findViewById<TextInputEditText>(R.id.emailEditText)
         val passwordInput = view.findViewById<TextInputEditText>(R.id.passwordEditText)
         val nextButton = view.findViewById<MaterialButton>(R.id.nextButton)
         val newMemberTextView = view.findViewById<TextView>(R.id.newMemberTextView)
 
-
         nextButton.setOnClickListener {
             val email = emailInput.text.toString().trim()
             val password = passwordInput.text.toString().trim()
 
 
-            if (!credentialsManager.isEmailValid(email)) {
-                Toast.makeText(requireContext(), "Invalid email format", Toast.LENGTH_SHORT).show()
+            if (email.isEmpty() || !credentialsManager.isEmailValid(email)) {
+                Toast.makeText(requireContext(), "Please enter a valid email address", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (!credentialsManager.isPasswordValid(password)) {
-                Toast.makeText(requireContext(), "Password cannot be empty", Toast.LENGTH_SHORT).show()
+
+            if (password.isEmpty() || !credentialsManager.isPasswordValid(password)) {
+                Toast.makeText(requireContext(), "Password cannot be empty or less than 6 characters", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
 
             if (credentialsManager.isValidUser(email, password)) {
                 Toast.makeText(requireContext(), "Login Successful!", Toast.LENGTH_SHORT).show()
+                (requireActivity().application as MyApp).credentialsManager.login(email, password)
 
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, RecyclerFragment()) // Container ID doğru olmalı
-                    .addToBackStack(null) // Geri tuşu ile LoginFragment'e dönmek isterseniz ekleyin
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, RecyclerFragment())
+                    .addToBackStack(null)
                     .commit()
             } else {
                 Toast.makeText(requireContext(), "Invalid email or password", Toast.LENGTH_SHORT).show()
@@ -69,10 +66,10 @@ class LoginFragment : Fragment() {
 
 
         newMemberTextView.setOnClickListener {
-           parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, RegisterFragment()) // Use the correct container ID
-               .addToBackStack(null) // Geri tuşu ile önceki fragment'e dönmek isterseniz ekleyin
-               .commit()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, RegisterFragment())
+                .addToBackStack(null)
+                .commit()
         }
 
         return view

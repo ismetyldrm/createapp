@@ -52,12 +52,12 @@ class RecipeAdapter(
         return recipeList.size
     }
 
-    // Data güncellemesi yapacak fonksiyon
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newRecipes: List<Recipe>) {
         recipeList = newRecipes
-        notifyDataSetChanged() // Veriler değiştiği için listeyi yeniden bağla
+        notifyDataSetChanged()
     }
 }
 
